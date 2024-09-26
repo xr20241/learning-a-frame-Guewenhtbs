@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-asset>
+            <img src="textures/texture2.jpg" id="base">
+            <img src="textures/flower2.jpg" id="normal">
+            <img src="textures/flower1.jpg" id="height">
+        </a-asset>
+        <a-box src="#base" repeat="2 2" normal-map="#normal" normal-texyure-repeat="2 2" position="-1 1.5 -2"></a-box>
+        <a-sphere src="#base" position="1 1.5 -3"></a-sphere>
+    </a-scene>
+    
+</body>
+</html>
