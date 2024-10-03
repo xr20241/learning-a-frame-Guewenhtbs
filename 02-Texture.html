@@ -9,13 +9,14 @@
 <body>
     <a-scene>
         <a-asset>
-            <img src="textures/texture2.jpg" id="base">
-            <img src="textures/flower2.jpg" id="normal">
-            <img src="textures/flower1.jpg" id="height">
+            <img src="textures/Brick/basecolor.jpg" id="base">
+            <img src="textures/Brick/normal.jpg" id="normal">
+            <img src="textures/Brick/roughness.jpg" id="roughness">
+            <img src="textures/Brick/ambientOcclusion.jpg" id="ambient">
         </a-asset>
-        <a-box src="#base" repeat="2 2" normal-map="#normal" normal-texyure-repeat="2 2" position="-1 1.5 -2"></a-box>
+        <a-box src="#base" repeat="2 2" normal-map="#normal" roughness="#roughness" ambient-occlusion-map="#ambient" normal-texyure-repeat="2 2" ambient-occlusion-texture-repeat="2 2" position="-1 1.5 -2"></a-box>
         <a-sphere src="#base" position="1 1.5 -3"></a-sphere>
-    </a-scene>
-    
+        <a-box src="#base" repeat="2 2" normal-map="#normal" normal-texyure-repeat="2 2" position="-3 1.5 -2"></a-box>
+    </a-scene>   
 </body>
 </html>
