@@ -6,19 +6,20 @@
     <title>Controller</title>
     <!-- 3-DoF controller: Oculus Go; 6-DoF controller: Oculus Quest -->
     <!-- We will also cover: Laser, Hands, Super-hands -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <!-- We need JS libs about A-Frame Extras and Super Hands -->
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+  
 </head>
 <body>
     <a-scene>
-        <a-entity
+        <!-- <a-entity
             laser-controls="
                 hand: right;
                 color: red;
             "
-        ></a-entity>
+        ></a-entity> -->
         <a-entity
             sphere-collider="objects: a-box;"
             super-hands
