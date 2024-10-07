@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Primitive</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <script>
+        AFRAME.registerComponent('kotakkosong', {
+            schema: {
+                ukuran: { type: "number", default: 1 }
+            },
+            tick: function() {
+                this.donat1.rotation.x += 0.01;
+                this.donat2.rotation.y += 0.01;
+                this.donat3.rotation.z += 0.01;
+            },
+            init: function() {
+                let data = this.data;
+                this.bahan = new THREE.MeshStandardMaterial({
+                    color:0xff00ff,
+                    wireframe:true
+                });
+                this.geometriKotak = new THREE.BoxGeometry(
+                    data.ukuran,
+                    data.ukuran,
+                    data.ukuran,
+                    3, 3, 3
+                );
+                this.kotak = new THREE.Mesh(this.geometriKotak, this.bahan);
+                this.geometriDonat = new THREE.TorusBufferGeometry(1.5, 0.2, 45, 45);
+                this.donat1 = new THREE.Mesh(this.geometriDonat, this.bahan);
+                this.donat1.rotation.x = 60;
+                this.donat2 = new THREE.Mesh(this.geometriDonat, this.bahan);
+                this.donat2.rotation.y = 45;
+                this.donat3 = new THREE.Mesh(this.geometriDonat, this.bahan);
+                this.kotakdonat = new THREE.Group();
+                this.kotakdonat.add(this.kotak);
+                this.kotakdonat.add(this.donat1);
+                this.kotakdonat.add(this.donat2);
+                this.kotakdonat.add(this.donat3);
+
+                this.el.setObject3D('mesh', this.kotakdonat);
+            }
+        })
+    </script>
+    <a-scene>
+        <a-entity kotakkosong position="0 1.5 -3"></a-entity>
+    </a-scene>
+</body>
+</html>
