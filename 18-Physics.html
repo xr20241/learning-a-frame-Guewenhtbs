@@ -9,30 +9,50 @@
 </head>
 <body>
     <script>
+        // AFRAME.registerComponent('boxgenerator', {
+        //     init:function() {
+        //         let el = this.el;
+        //         el.addEventListener('click', function() {
+        //             let scene = document.querySelector('#scene');
+        //             let newBox = document.createElement('a-box');
+        //             newBox.setAttribute("scale", "0.2 0.2 0.2");
+        //             let color = (Math.floor(Math.random()*0xFFFFFF)).toString(16);
+        //             while (color.length < 6) {
+        //                 color = "0" + color;
+        //             }
+        //             newBox.setAttribute("color", `#${color}`);
+        //             let x_pos = Math.random() * 2 - 1;
+        //             newBox.setAttribute("position", `${x_pos} 2 -3`);
+        //             newBox.setAttribute("dynamic-body", "shape: box");
+        //             scene.appendChild(newBox);
+        //         });
+        //     }
+        // });
+
         AFRAME.registerComponent('boxgenerator', {
             init:function() {
                 let el = this.el;
                 el.addEventListener('click', function() {
-                    let scene = document.querySelector('#scene');
-                    let newBox = document.createElement('a-box');
+                    let scene = document.querySelector("#scene");
+                    let newBox = document.createElement("a-box");
                     newBox.setAttribute("scale", "0.2 0.2 0.2");
-                    // couleur aleatoire en hexa
                     let color = (Math.floor(Math.random()*0xFFFFFF)).toString(16);
                     while (color.length < 6) {
                         color = "0" + color;
                     }
                     newBox.setAttribute("color", `#${color}`);
-                    let x_pos = Math.random() * 2 - 1;
-                    newBox.setAttribute("position", `${x_pos} 2 -3`);
-                    newBox.setAttribute("dynamic-body", "shape: box");
+                    let temp = Math.random() * 2 - 1;
+                    newBox.setAttribute("position", `${temp} 2 -3`);
+                    newBox.setAttribute("dynamic-body", "shape:box");
+                    newBox.setAttribute("spring", "target:#anchor;stiffness:25");
                     scene.appendChild(newBox);
                 });
             }
         });
     </script>
     <a-scene id="scene" physics="debug: true">
-        <a-camera><a-cursor></a-cursor></a-camera>
-        <a-plane
+        <!-- <a-camera><a-cursor></a-cursor></a-camera> -->
+        <!-- <a-plane
             static-body
             color="#222"
             rotation="-90 0 0"
@@ -50,7 +70,34 @@
             color="yellow" 
             scale="0.2 0.2 0.2" 
             position="0.2 3 -1"
-        ></a-box>    
+        ></a-box>     -->
+
+        <a-camera position="0 1.5 2">
+            <a-cursor></a-cursor>
+        </a-camera>
+        <a-box
+            color="red"
+            id="anchor"
+            scale="0.5 0.5 0.5"
+            static-body
+            position="4 2.5 -3"
+            wireframe="true"
+        ></a-box>
+        <!-- <a-box
+            color="green"
+            id="moving"
+            constraint="target:#anchor;type:coneTwist;pivot:0 -0.5 0"
+            scale="4 0.2 1"
+            dynamic-body
+            position="0 3.5 -3"
+        ></a-box> -->
+        <a-box boxgenerator color="yellow" scale="0.2 0.2 0.2" position="0 1.5 -3"></a-box>
+        <a-plane
+            static-body
+            color="#222"
+            rotation="-90 0 0"
+            scale="15 15 15"
+        ></a-plane>
     </a-scene>
 </body>
 </html>
